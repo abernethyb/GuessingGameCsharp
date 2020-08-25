@@ -16,6 +16,11 @@ namespace GuessingGame
             Console.WriteLine("Welcome to the game. You will soon be asked to guess a number between 1 and 100, but first, choose your dificulty level");
             Console.Write("Cheater 'c', Easy 'E', Medium 'M', or Hard 'H'");
             string dificulty = Console.ReadLine().ToLower();
+            while (dificulty != "c" && dificulty != "e" && dificulty != "m" && dificulty != "h")
+            {
+                Console.Write("Cheater 'c', Easy 'E', Medium 'M', or Hard 'H'");
+                dificulty = Console.ReadLine().ToLower();
+            }
             int difNum = 4;
             int cheater = 1;
             bool cheats = false;
@@ -39,7 +44,15 @@ namespace GuessingGame
             Console.WriteLine("Hi there! I'm thinking of a number, but I bet you won't be able to guess what it is.");
             Console.Write("But why don't you give it a shot anyway ");
             string input = Console.ReadLine();
-            int numInput = Int32.Parse(input);
+            int numInput = 0;
+            try
+            {
+                numInput = Int32.Parse(input);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("That's not a number, silly!");
+            }
             for (int i = 1; i < difNum; i = i + cheater)
             {
                 if (numInput == answer)
@@ -56,14 +69,32 @@ namespace GuessingGame
                             Console.WriteLine("Too High!");
                             Console.Write("Guess Again!");
                             input = Console.ReadLine();
-                            numInput = Int32.Parse(input);
+                            //numInput = Int32.Parse(input);
+                            try
+                            {
+                                numInput = Int32.Parse(input);
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("That's not a number, silly!");
+                            }
                         }
                         else
                         {
                             Console.Write($"Too High! You have {difNum - i} guesses remaining");
                             Console.Write("Guess Again!");
                             input = Console.ReadLine();
-                            numInput = Int32.Parse(input);
+                            //numInput = Int32.Parse(input);
+                            try
+                            {
+                                numInput = Int32.Parse(input);
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("That's not a number, silly!");
+                                Console.Write("Guess Again!");
+                                input = Console.ReadLine();
+                            }
                         }
 
                     }
@@ -74,14 +105,32 @@ namespace GuessingGame
                             Console.WriteLine("Too Low!");
                             Console.Write("Guess Again!");
                             input = Console.ReadLine();
-                            numInput = Int32.Parse(input);
+                            //numInput = Int32.Parse(input);
+                            try
+                            {
+                                numInput = Int32.Parse(input);
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("That's not a number, silly!");
+                            }
                         }
                         else
                         {
                             Console.Write($"Too Low! You have {difNum - i} guesses remaining");
                             Console.Write("Guess Again!");
                             input = Console.ReadLine();
-                            numInput = Int32.Parse(input);
+                            //numInput = Int32.Parse(input);
+                            try
+                            {
+                                numInput = Int32.Parse(input);
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("That's not a number, silly!");
+                                Console.Write("Guess Again!");
+                                input = Console.ReadLine();
+                            }
                         }
                     }
                 }
